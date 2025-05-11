@@ -1,3 +1,20 @@
+# Exercice 1
+def enumere(tab:list) -> dict:
+    '''Renvoie un dictionnaire avec des couples éléments de tab / liste d'indices'''
+    rslt = {}
+    for i in range(len(tab)):
+        if tab[i] not in rslt.keys():
+            rslt[tab[i]] = [i]
+        else:
+            rslt[tab[i]].append(i)
+    return rslt
+
+print(f"------ \n Exercice 1 \n------")
+print(enumere([1,2,3]))
+print(enumere([1, 1, 2, 3, 2, 1]))
+
+
+# Exercice 2
 class Noeud:
     """Classe représentant un noeud d'un arbre binaire"""
     def __init__(self, etiquette, gauche, droit):
@@ -23,10 +40,25 @@ def insere(arbre, cle):
     if arbre == None:
         return Noeud(cle, None, None) # creation d'une feuille
     else:
-        if ...: 
+        if cle < arbre.etiquette: 
             arbre.gauche = insere(arbre.gauche, cle)
         else:
-            arbre.droit = ... 
+            arbre.droit = insere(arbre.droit, cle)
         return arbre
 
 
+arbre = Noeud(5, 
+              Noeud(2, 
+                    None, 
+                    Noeud(3, None, None)),
+              Noeud(7, None, None))
+
+print(f"------ \n Exercice 2 \n------")
+insere(arbre, 1)
+print(parcours(arbre, []))
+insere(arbre, 4)
+print(parcours(arbre, []))
+insere(arbre, 6)
+print(parcours(arbre, []))
+insere(arbre, 8)
+print(parcours(arbre, []))
