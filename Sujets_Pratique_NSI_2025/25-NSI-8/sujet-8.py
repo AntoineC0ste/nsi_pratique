@@ -1,3 +1,17 @@
+# Exercice 1
+def maximum_tableau(tab:list[int]) -> int:
+    '''Renvoie la valeur maximale du tableau spécifié.'''
+    assert tab != [], f"Le tableau spécifié est vide: {tab}"
+
+    maxi = tab[0]
+    for nombre in tab:
+        if nombre > maxi:
+            maxi = nombre
+
+    return maxi
+
+
+# Exercice 2
 class Pile:
     """Classe définissant une structure de pile."""
     def __init__(self):
@@ -24,13 +38,13 @@ def bon_parenthesage(ch):
     est bien parenthésée"""
     p = Pile()
     for c in ch:
-        if c == ...: 
+        if c == '(': 
             p.empiler(c)
-        elif c == ...: 
+        elif c == ')': 
             if p.est_vide():
-                ...
+                return False
             else:
-                ...
-    return ... 
+                p.depiler()
+    return True 
 
-
+print(bon_parenthesage('()()((())())()()'))
