@@ -1,3 +1,19 @@
+# Exercice 1
+def delta(liste:list) -> list:
+    comp = [liste[0]]
+    if len(liste) == 1:
+        return comp
+    
+    for i in range(1, len(liste)):
+        comp.append(liste[i]-liste[i-1])
+    
+    return comp
+
+assert delta([1000, 800, 802, 1000, 1003]) == [1000, -200, 2, 198, 3]
+assert delta([42]) == [42]
+
+
+# Exercice 2
 class Expr:
     """Classe implémentant un arbre d'expression."""
 
@@ -18,12 +34,23 @@ class Expr:
     def infixe(self):
         """renvoie la représentation infixe de l'expression en
         chaine de caractères"""
-        s = ... 
+        s = ""
         if self.gauche is not None:
-            s = s + '(' + ... .infixe() 
-        s = s + ... 
-        if ... is not None: 
-            s = s + ... + ... 
+            s = s + '(' + self.gauche.infixe() 
+        s = s + str(self.valeur)
+        if self.droite is not None: 
+            s = s + self.droite.infixe() + ')' 
         return s
 
 
+a = Expr(Expr(None, 1, None), '+', Expr(None, 2, None))
+assert a.infixe() == '(1+2)'
+
+b = Expr(Expr(Expr(None, 1, None), '+', Expr(None, 2, None)),'*', Expr(Expr(None, 3, None), '+', Expr(None, 4, None)))
+assert b.infixe() == '((1+2)*(3+4))'
+
+e = Expr(
+Expr(Expr(None, 3, None), '*', Expr(Expr(None, 8, None),
+'+', Expr(None, 7, None))),
+'-', Expr(Expr(None, 2, None), '+', Expr(None, 1, None)))
+assert e.infixe() == '((3*(8+7))-(2+1))'
