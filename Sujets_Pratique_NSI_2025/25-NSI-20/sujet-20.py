@@ -1,3 +1,18 @@
+# Exercice 1
+
+def min_et_max(tab:list) -> dict:
+    min = tab[0]
+    max = tab[0]
+    for valeur in tab:
+        if valeur < min:
+            min = valeur
+            
+        if valeur > max:
+            max = valeur
+
+    return {'min':min, 'max':max}
+
+# Exercice 2
 class Carte:
     def __init__(self, c, v):
         """Initialise les attributs couleur (entre 1 et 4), 
@@ -23,15 +38,20 @@ class Paquet_de_cartes:
         """ Initialise l'attribut contenu avec une liste des 52
         objets Carte possibles rangés par valeurs croissantes en
         commençant par pique, puis cœur, carreau et trèfle. """
-        ...
-        ...
-            ...
-                ...
+        self.contenu = []
+        for c in range(1, 5): # Pour chaque couleur,
+            for v in range(1, 14): # Et chaque valeur,
+                self.contenu.append(Carte(c, v)) # On ajoute la carte.
 
-    def recuperer_carte(self, pos):
+    def recuperer_carte(self, pos) -> Carte:
         """ Renvoie la carte qui se trouve à la position pos 
         (entier compris entre 0 et 51). """
-        ...
-        ...
-
-
+        assert 0 <= pos <= 51, f"Le paramètre pos est invalide: {pos}"
+        return self.contenu[pos]
+    
+jeu = Paquet_de_cartes()
+carte1 = jeu.recuperer_carte(20)
+print(carte1.recuperer_valeur())
+carte2 = jeu.recuperer_carte(0)
+print(carte2.recuperer_couleur())
+# carte3 = jeu.recuperer_carte(52)
