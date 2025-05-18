@@ -1,0 +1,1 @@
+Ne pas oublier d'ECHANGER les caractères au lieu de hardcode
